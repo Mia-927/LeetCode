@@ -27,3 +27,27 @@ class Solution {
         return false;
     }
 }
+//first attempt but with chat GPT and solution from Leet Code
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        for(int i = 0; i < s.length(); i ++){
+            char c = s.charAt(i);//重複は短く
+
+            if(c == '(' || c ==  '[' || c ==  '{')//開始と終わりを分ける
+                stack.push(c);
+            else{
+                if(stack.isEmpty())//］、｝、）から始まったとき
+                return false;
+
+                char top = stack.pop();//重複
+                if((c == ')' && top != '(') || (c == ']' && top != '[') || (c == '}' && top != '{'))
+                {//内容がそろってるか確認
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();//空ならtrue何か入っていればfalse
+    }
+}
