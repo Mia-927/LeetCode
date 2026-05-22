@@ -1,0 +1,29 @@
+//Valid Parentheses
+//first attempt I could finished it by myself!! ...with flaw
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        stack.push(s.charAt(0));
+        for(int i = 1; i < s.length(); i ++){
+            if(s.charAt(i) == ')' && stack.peek() == '('){
+                stack.pop();
+            }
+            else if(s.charAt(i) == ']' && stack.peek() == '['){
+                stack.pop();
+            }
+            else if(s.charAt(i) == '}' && stack.peek() == '{'){
+                stack.pop();
+            }
+            else if((s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '['))
+            {
+                stack.push(s.charAt(i));
+            }
+            else{
+                return false;
+            }
+            if(stack.size() == 0)
+                return true;//Not needed
+        }
+        return false;
+    }
+}
