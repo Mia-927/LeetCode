@@ -26,3 +26,16 @@ class Solution {
         return true;
     }
 }
+//with gpt Stringが重いこと、数字のままでできるってことだけヒントもらった
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x < 0 || (x != 0 && x % 10 == 0))
+        return false;
+        int aim = 0;
+        while(aim < x){
+            aim = aim * 10 + x % 10;
+            x = x / 10;
+        }
+        return (aim == x) || (aim / 10 == x);
+    }
+}
