@@ -28,3 +28,17 @@ class Solution {
          return new int[] {-1, -1};
     }
 }
+//Second attempt by myself
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < nums.length; i ++){
+            if(map.getValue(i) == nums[i]){
+                return new int[] {i, map.getKey(i)};
+            }
+            map.push(i, target - nums[i]);
+        }
+        return new int[] {-1, -1};
+    }
+}
+//with gpt
