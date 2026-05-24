@@ -84,3 +84,19 @@ class Solution {
         return aws;    
     }
 }
+//third attempt with github I saw the code I did before
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length == 0 || strs == null)
+            return "";
+        for(int i = 0; i < strs[0].length(); i++){
+            for(int j = 1; j < strs.length; j++){
+                // <=にするとLengthとindexの差が反映される
+                if(strs[j].length() <= i || (strs[0].charAt(i) != strs[j].charAt(i))){
+                    return strs[0].substring(0, i);//subString覚えなきゃ
+                }
+            }
+        }    
+        return strs[0];    
+    }
+}
