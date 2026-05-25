@@ -51,3 +51,80 @@ class Solution {
         return stack.isEmpty();//空ならtrue何か入っていればfalse
     }
 }
+//second attempt by myself　コードごちゃごちゃしてる
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        if(s.length() == 0 || s == null)
+            return true;
+        if(s.length() % 2 == 1)
+            return false;
+
+        for(int i = 0; i < s.length(); i ++){
+            char currentChar = s.charAt(i);
+            if(currentChar == '(' || currentChar == '{' || currentChar == '['){
+                stack.push(currentChar);
+            }
+            else{//もしかしてswitchの方が早い？
+                if(i == 0 || stack.isEmpty())
+                    return false;
+                if(currentChar == ')'){
+                    if(stack.peek() != '(')
+                      return false;
+                    stack.pop();
+                }
+                else if(currentChar == ']'){
+                    if(stack.peek() != '[')
+                      return false;
+                    stack.pop();
+                }
+                else if(currentChar == '}'){
+                    if(stack.peek() != '{')
+                      return false;
+                    stack.pop();
+                }
+            }
+        }
+        if(stack.isEmpty())
+            return true;
+        return false;
+    }
+}
+//with ai
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        if(s == null || s.length() == 0) //nullはｓが存在しないっていう意味。s.lengthは空文字、ｓは存在する
+            return true;
+        if(s.length() % 2 == 1)
+            return false;
+
+        for(int i = 0; i < s.length(); i ++){
+            char currentChar = s.charAt(i);
+            if(currentChar == '(' || currentChar == '{' || currentChar == '['){
+                stack.push(currentChar);
+            }
+            else{//もしかしてswitchの方が早い？//psあんま変わらんて
+                if(stack.isEmpty())
+                    return false;
+                switch(currentChar){
+                    case ')': 
+                        if(stack.pop() != '(')//ここも変えたpeak -> pop
+                            return false;
+                        break;
+                    case ']': 
+                        if(stack.pop() != '[')
+                            return false;
+                        break;
+                    case '}': 
+                        if(stack.pop() != '{')
+                            return false;   
+                        break;          
+                }
+            }
+        }
+        if(stack.isEmpty())
+            return true;
+        return false;
+    }
+}
