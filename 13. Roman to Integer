@@ -1,0 +1,30 @@
+//I do not remenber attempt (after this count as 1)
+//by myself できたぜ！そんな引っかからなかったし
+class Solution {
+    public int romanToInt(String s) {
+        int len = s.length();
+        int aws = romanNum(s.charAt(len - 1));
+        for(int i = 0; i < len -1; i++){
+            int currentNum = romanNum(s.charAt(i));
+            if(currentNum < romanNum(s.charAt(i + 1))){
+                aws -= currentNum;
+            }
+            else{
+                aws += currentNum;
+            }
+        }
+        return aws;
+    }
+    public int romanNum(char c){
+        switch(c){
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+            default: return 0;
+        }
+    }
+}
