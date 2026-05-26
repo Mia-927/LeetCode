@@ -41,3 +41,39 @@ class Solution {
         }
     }
 }
+//with ai and more understanding
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        //とりま手打ちAIコピペ
+        ListNode dummy = new ListNode(0); //最初固定用　０は最後の文で消す
+        ListNode current = dummy;//上で固定してこれで追加//両方Pointerだから反映される（物自体は変わらない）
+        while(list1 != null && list2 != null){
+            if(list1.val < list2.val){//listのvalってなんぞや//小さい方をnextにする
+                current.next = list1;//０ー＞list1[0]
+                list1 = list1.next;//list1[0] = list1[1]減らしている
+            }//０ー＞list1[0]ー＞list2[0]って感じ
+            else{
+                current.next = list2;
+                list2 = list2.next;
+            }
+            current = current.next;//current自体はまだ0それをlist系の次に移す
+        }
+        if(list1 != null){
+            current.next = list1;//これ次の次ってことにならない？
+        }
+        if(list2 != null){
+            current.next = list2;//これ次の次ってことにならない？
+        }
+        return dummy.next;//ここで０が先頭のノードを飛ばしてlist系だけにする
+    }
+}
