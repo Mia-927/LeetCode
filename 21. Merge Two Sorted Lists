@@ -14,3 +14,30 @@ class Solution {//急に出されてもListNodeが何なのか分からんよ！
         return lstN.sort();
     }
 }
+//with ai and a lot of questions and confusement
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        //とりま手打ちAIコピペ
+        ListNode dummy = new ListNode(0); //（仮）って意味かな？０(val)じゃなかったらどうするんだろ？
+        ListNode current = dummy;//なぜ2個あるのか分からん
+        while(list1 != null && list2 != null){
+            if(list1.val < list2.val){//listのvalってなんぞや//小さい方をnextにする
+                current.next = list1;//０ー＞list1[0]
+                list1 = list1.next;//list1[0] = list1[1]減らしている
+            }
+            else{
+                current.next = list2;
+                list2 = list2.next;
+            }
+            current = current.next;//ここで0を消すのか！と思ったけど他の1番前の伊sん数も消しちゃう
+            if(list1 != null){
+                current.next = lsit1;//これ次の次ってことにならない？
+            }
+            if(list2 != null){
+                current.next = lsit2;//これ次の次ってことにならない？
+            }
+            return dummy.next;//いったいこれが何しているのか意味不
+            //なるほどここで0を消すのか//でもなんでdummyがcurrentの影響を受けているのかまだ分からん
+        }
+    }
+}
