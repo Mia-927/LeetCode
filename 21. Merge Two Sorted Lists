@@ -77,3 +77,39 @@ class Solution {
         return dummy.next;//ここで０が先頭のノードを飛ばしてlist系だけにする
     }
 }
+//trying by myself and a little help
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode head = new ListNode(0);
+        ListNode last = head;
+        while(list1 != null && list2 != null){//ここでチラ見した
+            if(list1.val < list2.val){
+                last.next = list1;
+                list1 = list1.next;
+            }
+            else{
+                last.next = list2;
+                list2 = list2.next;
+            }
+            last = last.next;
+        }
+        if(list1 != null){//ここで割と見た　while || じゃなくて&&ってわかった//1個だけ余る設定なのかな？
+            last.next = list1;
+            //list1 = list1.next;もう追加しないからこれいらない
+        }
+        if(list2 != null){
+            last.next = list2;
+        }
+        return head.next;//なんかめちゃバグったんだがwhileの2個目が==になってたわ
+    }
+}
