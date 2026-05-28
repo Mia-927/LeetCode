@@ -31,3 +31,17 @@ class Solution {
         return count;
     }
 }
+//with AI絶対複数回やらないと！
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        //numsも書き換えること勘違いしてたからやり直し
+        int k = 1;//1でも０でもＲｅｔｕｒｎ　＋１すればいい、なんで？
+        for(int i = 1; i < nums.length; i ++){//後ろ比較型から前比較型に
+            if(nums[i] != nums[i - 1]){//違う場合だけ通す
+                nums[k] = nums[i];//もっと違う名前がよさそう、
+                k ++;
+            }
+        }
+        return k;
+    }
+}
