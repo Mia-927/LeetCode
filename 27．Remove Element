@@ -16,3 +16,19 @@ class Solution {
         return k + 1;
     }
 }
+//with hints from claude
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        //valをnumから取り除く　num入れ替える、valは後炉にすろ　ｋは長さ
+        int len = nums.length; 
+        int k = 0;
+
+        for(int i = 0; i < len; i++){
+            if(nums[i] != val){//差し替え方法が分からない～！！//valじゃないものを前にするといいらしい
+                nums[k] = nums[i];
+                k ++;
+            }
+        }
+        return k;
+    }
+}
