@@ -1,0 +1,18 @@
+//first attempt by myself with error
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        //valをnumから取り除く　num入れ替える、valは後炉にすろ　ｋは長さ
+        int len = nums.length; 
+        int k = 0;
+
+        for(int i = 0; i < len - 1; i++){
+            if(nums[i] == val){//差し替え方法が分からない～！！
+                if(nums[i + 1] != val)
+                    nums[i] = nums[i + 1];
+                k ++;
+            }
+        }
+        
+        return k + 1;
+    }
+}
