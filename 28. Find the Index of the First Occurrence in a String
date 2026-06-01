@@ -1,0 +1,24 @@
+//fist attempt by myself with index errors
+class Solution {
+    public int strStr(String haystack, String needle) {
+        //haystackがneedleに含まれるか、含まれるなら最初の文字のインデックス
+        int k = 0;
+        int count = 0;
+        if(haystack.equals("") || needle.equals("") || haystack.length() < needle.length())
+            return -1;
+        for(int i = 0; i < haystack.length(); i++){
+            if(haystack.charAt(i) == needle.charAt(k)){
+                k ++;
+            }
+            else{
+                if(0 < k){
+                    if(k == needle.length() - 1)
+                        break;
+                    k = -1;
+                    break;
+                }
+            }
+        }
+        return k;
+    }
+}
