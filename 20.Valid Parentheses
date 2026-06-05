@@ -128,3 +128,46 @@ class Solution {
         return false;
     }
 }
+//third attempt なんっ回もやってたのに一発でできないどころか先生に2回Import含めて聞いて10っ回も実行したわ！！
+import java.util.Stack;
+public final class LeetCode {
+    private LeetCode() {}
+    
+    public static boolean valid_parentheses(String s) {
+        /* Complete this method */
+        //Deque<Integer> stack = new ArrayDeque<integer>
+        Stack<Character> stack = new Stack<>();
+        if(s.equals("") || s.length() == 0)
+            return true;
+        if(s.length() % 2 == 1)//奇数はじき～
+            return false;
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(c == '{' || c == '(' || c == '['){
+                stack.push(s.charAt(i));
+            }
+            else{
+                if(stack.isEmpty())//ここ完全に忘れてた　空Popダメ絶対
+                    return false;
+                if(c == '}'){
+                    if(stack.pop() != '{'){
+                        return false;
+                    }
+                }
+                if(c == ']'){
+                    if(stack.pop() != '['){
+                        return false;
+                    }
+                }
+                if(c == ')'){
+                    if(stack.pop() != '('){
+                        return false;
+                    }
+                }
+            }
+        }
+        if(stack.isEmpty())//ここ思い出せたけど忘れてた
+            return true;
+        return false;
+    }
+}
