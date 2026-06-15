@@ -195,3 +195,28 @@ class Solution {
         return false;
     }
 }
+//かっこの順番違かった
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        if(s == null || s.length() == 0) return true;//equalsないけどまぁあってるか？？
+        if(s.length() % 2 == 1) return false; //奇数はじき忘れたわ
+        for(int i = 0; i < s.length(); i++){//ここの（）の順番の問題だったわ
+            if(stack.isEmpty() && (s.charAt(i) == ')' || s.charAt(i) == ']' || s.charAt(i) == '}')){
+                return false;
+            }
+            //ここなんだろうけど見ても分からん、ざんねん
+            else if (s.charAt(i) == ')' || s.charAt(i) == ']' || s.charAt(i) == '}'){
+                if(stack.peek() == '(' && s.charAt(i) == ')') stack.pop();
+                else if(stack.peek() == '[' && s.charAt(i) == ']') stack.pop();
+                else if(stack.peek() == '{' && s.charAt(i) == '}') stack.pop();
+                else return false;
+            }
+            else{
+                stack.push(s.charAt(i));
+            }
+        }
+        if(stack.isEmpty()) return true;
+        return false;
+    }
+}
